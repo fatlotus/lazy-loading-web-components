@@ -3,29 +3,20 @@ Lazy Loaded Web Components
 
 Current libraries (primarily Polymer), require that developers compile their
 HTML and JavaScript with bower and import it into the page, before they can add
-functionality into a page. I think this approach is bad, so I wrote this code to
-demonstrate a model I think is easier to use.
+functionality into a page. I think this approach is somewhat hard to use, so I
+wrote this code to demonstrate a model I think is better.
 
 The code in this repository implements lazy loading, which dramatically simplies
-your life. Instead of endless `bower install` nonsense, simply add
+your life. Instead of having to run `bower install`, simply add
 
     <link rel="import" href="https://cdn.com/my-library.html"/>
 
 to the top of your page.
 
-Doesn't this cause more roundtrips?
------------------------------------
-
-Yes, but HTTP/2 Push responses are a cleaner approach to that problem. While
-the gzip'ed responses will be smaller, and so will have worse compression 
-ratios, lazy components can be downloaded page-by-page, allowing for more 
-granular downloads.
-
 Can I use this code?
 --------------------
 
-Absolutely. This code is public domain, because I don't want to live in a world
-where writing HTML requires installing something. Specifically:
+Absolutely; this code is public domain. Specifically:
 
 This is free and unencumbered software released into the public domain.
 

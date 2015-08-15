@@ -3,9 +3,42 @@
 <head>
   <title>Lazy WebComponents Test</title>
   <link rel="import" href="all-my-shapes.html"/>
+  <style>
+    body {
+      font:1.1em sans-serif;
+    }
+  
+    h1 {
+      font:bold 2em sans-serif;
+    }
+    
+    pre {
+      background-color: #eee;
+      padding: 0.5em;
+      color: #000;
+      width: 120ex;
+    }
+  </style>
 </head>
 <body>
+  <h1>What is going on?</h1>
+  <p>The two WebComponents below were loaded dynamically.</p>
   <my-square></my-square>
   <my-circle></my-circle>
+  <h2>What is this trickery?</h2>
+  <p>Right now, the community seems to be coalescing around the use of Bower to
+     statically import and "vulcanize" the custom elements being used in a page.
+     To get a Material Design button, for example, one must run:</p>
+  <pre>$ bower install --save PolymerElements/paper-button`</pre>
+  <p>and then import:</p>
+  <pre>&lt;link rel="import" href="bower_components/paper-button/paper-button.html"&gt;</pre>
+  <p>for each component you plan to use on a page. Using dynamic loading, 
+     however, there is just a single import to get the entire suite.</p>
+  <pre>&lt;link rel="import" href="my-library.html"&gt;</pre>
+  <h2>Why does this matter?</h2>
+  <p>It's easier to use, but more importantly, it allows for the creation of
+     much larger catalogs of elements. Imagine an NPM, but for HTML elements 
+     &emdash; where you can customize code, and then copy and paste into your
+     page, without downloads, imports, or tweaks.</p>
 </body>
 </html>
