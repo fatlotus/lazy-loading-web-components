@@ -1,0 +1,26 @@
+<template>
+  <style>
+    div {
+      background-color: #f00;
+      width: 10ex;
+      height: 10ex;
+      border: 1px solid #fff;
+      box-shadow: 0 0 1px #f00;
+      display: inline-block;
+      margin: 1ex;
+      border-radius: 5ex;
+    }
+  </style>
+  <div></div>
+</template>
+
+<script>
+var doc = document.currentScript.ownerDocument;
+var template = doc.querySelector('template');
+
+MyCircle.prototype.createdCallback = MyCircle.prototype.create = function() {
+  console.log("Making circle!");
+  var clone = document.importNode(template.content, true);
+  this.createShadowRoot().appendChild(clone);
+};
+</script>

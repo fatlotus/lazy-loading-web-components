@@ -1,0 +1,35 @@
+<script>
+(function() {
+  var registerLazy = function(tagName, htmlFile) {
+    var instances = [];
+    var proto = Object.create(HTMLElement.prototype);
+    var obj;
+
+    proto.createdCallback = function() {
+      if (obj.prototype.create) {
+        return obj.prototype.create.apply(this);
+      }
+
+      if (instances.length == 0) {
+        var link = document.createElement("link");
+        link.rel = "import";
+        link.href = htmlFile;
+
+        link.onload = function() {
+          instances.forEach(function (elem) {
+            elem.createdCallback();
+          });
+        };
+
+        document.documentElement.appendChild(link);
+      }
+      instances.push(this);
+    };
+
+    return obj = document.registerElement(tagName, {prototype: proto});
+  }
+
+  MySquare = registerLazy("my-square", "my-square.html");
+  MyCircle = registerLazy("my-circle", "my-circle.html");
+})();
+</script>
